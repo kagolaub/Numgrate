@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.net.*;
 import java.util.*;
 
-public class MainMenu implements ActionListener {
+public class MainMenu implements ActionListener, View {
   JPanel pane;
   JLabel title = new JLabel();
   JButton intro = new JButton();
@@ -16,11 +16,9 @@ public class MainMenu implements ActionListener {
   
   public MainMenu(JPanel pane) {
     this.pane = pane;
-    options();
-    constraints();
   }
   
-  public void options() {
+  public void showUI() {
     URL titleURL = getClass().getResource("/assets/umgrate.png");
     URL introURL = getClass().getResource("/assets/introduction.png");
     URL introRollURL = getClass().getResource("/assets/introductionroll.png");
@@ -56,7 +54,7 @@ public class MainMenu implements ActionListener {
     styleButton(newtoncotes,newtonIcon,newtonRollIcon);
     styleButton(gaussian,gaussianIcon,gaussianRollIcon);
     styleButton(clenshaw,clenshawIcon,clenshawRollIcon);
-    
+    constraints();
     pane.add(title);
     pane.add(intro);
     pane.add(newtoncotes);
@@ -71,7 +69,8 @@ public class MainMenu implements ActionListener {
     button.setFocusPainted(false);
     button.setRolloverIcon(rollIcon);
   }
-  public void constraints() {
+  
+  private void constraints() {
     SpringLayout layout = (SpringLayout)pane.getLayout();
     layout.putConstraint(SpringLayout.WEST, title, 19, SpringLayout.WEST, pane);
     layout.putConstraint(SpringLayout.NORTH, title, 25, SpringLayout.NORTH, pane);

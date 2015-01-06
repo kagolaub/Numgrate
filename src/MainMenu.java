@@ -39,15 +39,15 @@ public class MainMenu implements ActionListener, View {
     ImageIcon clenshawIcon = new ImageIcon(clenshawURL);
     ImageIcon clenshawRollIcon = new ImageIcon(clenshawRollURL);
     
-    titleIcon = new ImageIcon(titleIcon.getImage().getScaledInstance(250,130,java.awt.Image.SCALE_SMOOTH));
-    introIcon = new ImageIcon(introIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    introRollIcon = new ImageIcon(introRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    newtonIcon = new ImageIcon(newtonIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    newtonRollIcon = new ImageIcon(newtonRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    gaussianIcon = new ImageIcon(gaussianIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    gaussianRollIcon = new ImageIcon(gaussianRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    clenshawIcon = new ImageIcon(clenshawIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    clenshawRollIcon = new ImageIcon(clenshawRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
+    titleIcon = new ImageIcon(titleIcon.getImage().getScaledInstance(240,120,java.awt.Image.SCALE_SMOOTH));
+    introIcon = new ImageIcon(introIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    introRollIcon = new ImageIcon(introRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    newtonIcon = new ImageIcon(newtonIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    newtonRollIcon = new ImageIcon(newtonRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    gaussianIcon = new ImageIcon(gaussianIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    gaussianRollIcon = new ImageIcon(gaussianRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    clenshawIcon = new ImageIcon(clenshawIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
+    clenshawRollIcon = new ImageIcon(clenshawRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/2.8),(int)(pane.getHeight()/7.8),java.awt.Image.SCALE_SMOOTH));
     
     title.setIcon(titleIcon);
     styleButton(intro,introIcon,introRollIcon);
