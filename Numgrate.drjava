@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <drjava version="drjava-20140826-r5761">
-  <project autorefresh="false" build="src/" main="src.NumgrateFrame" root="" work="">
-    <createjar file=""/>
+  <project autorefresh="false" build="" main="src.NumgrateFrame" manifest="" root="" work="">
+    <createjar file="numgrate.jar" flags="12"/>
     <source>
-      <file active="true" name="src/MainMenu.java" package="src" timestamp="06-Jan-2015 12:37:27">
-        <select from="1909" to="1909"/>
-        <scroll column="582" row="0"/>
+      <file active="true" name="src/MainMenu.java" package="src" timestamp="07-Jan-2015 20:13:22">
+        <select from="1453" to="1453"/>
+        <scroll column="570" row="0"/>
       </file>
-      <file name="src/View.java" package="src" timestamp="03-Jan-2015 15:32:40">
-        <select from="1909" to="1909"/>
-        <scroll column="582" row="0"/>
+      <file name="src/View.java" package="src" timestamp="06-Jan-2015 22:27:28">
+        <select from="1453" to="1453"/>
+        <scroll column="570" row="0"/>
       </file>
-      <file name="src/Introduction.java" package="src" timestamp="03-Jan-2015 15:32:59">
-        <select from="1909" to="1909"/>
-        <scroll column="582" row="0"/>
+      <file name="src/Introduction.java" package="src" timestamp="06-Jan-2015 22:27:29">
+        <select from="1453" to="1453"/>
+        <scroll column="570" row="0"/>
       </file>
-      <file name="src/NumgrateFrame.java" package="src" timestamp="06-Jan-2015 12:32:25">
-        <select from="1909" to="1909"/>
-        <scroll column="582" row="0"/>
+      <file name="src/NumgrateFrame.java" package="src" timestamp="07-Jan-2015 20:04:06">
+        <select from="1453" to="1453"/>
+        <scroll column="570" row="0"/>
       </file>
     </source>
     <included/>

@@ -8,6 +8,7 @@ import java.util.*;
 public class MainMenu implements ActionListener, View {
   JPanel pane;
   JLabel title = new JLabel();
+  JLabel gif = new JLabel();
   JButton intro = new JButton();
   JButton newtoncotes = new JButton();
   JButton gaussian = new JButton();
@@ -19,6 +20,11 @@ public class MainMenu implements ActionListener, View {
   }
   
   public void showUI() {
+    double buttonWidthFactor = 2.75;
+    double titleWidthFactor = 3.5;
+    double buttonHeightFactor = 7.75;
+    double titleHeightFactor = 4.6;
+    
     URL titleURL = getClass().getResource("/assets/umgrate.png");
     URL introURL = getClass().getResource("/assets/introduction.png");
     URL introRollURL = getClass().getResource("/assets/introductionroll.png");
@@ -28,7 +34,9 @@ public class MainMenu implements ActionListener, View {
     URL gaussianRollURL = getClass().getResource("/assets/gaussianroll.png");
     URL clenshawURL = getClass().getResource("/assets/clenshaw.png");
     URL clenshawRollURL = getClass().getResource("/assets/clenshawroll.png");
+    URL gifURL = getClass().getResource("/assets/gif.gif");
     
+    ImageIcon gifIcon = new ImageIcon(gifURL);
     ImageIcon titleIcon = new ImageIcon(titleURL);
     ImageIcon introIcon = new ImageIcon(introURL);
     ImageIcon introRollIcon = new ImageIcon(introRollURL);
@@ -38,23 +46,27 @@ public class MainMenu implements ActionListener, View {
     ImageIcon gaussianRollIcon = new ImageIcon(gaussianRollURL);
     ImageIcon clenshawIcon = new ImageIcon(clenshawURL);
     ImageIcon clenshawRollIcon = new ImageIcon(clenshawRollURL);
-    
-    titleIcon = new ImageIcon(titleIcon.getImage().getScaledInstance(250,130,java.awt.Image.SCALE_SMOOTH));
-    introIcon = new ImageIcon(introIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    introRollIcon = new ImageIcon(introRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    newtonIcon = new ImageIcon(newtonIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    newtonRollIcon = new ImageIcon(newtonRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    gaussianIcon = new ImageIcon(gaussianIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    gaussianRollIcon = new ImageIcon(gaussianRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    clenshawIcon = new ImageIcon(clenshawIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    clenshawRollIcon = new ImageIcon(clenshawRollIcon.getImage().getScaledInstance(295,70,java.awt.Image.SCALE_SMOOTH));
-    
+   
+    titleIcon = new ImageIcon(titleIcon.getImage().getScaledInstance((int)(pane.getWidth()/3.5),(int)(pane.getHeight()/4.6),java.awt.Image.SCALE_SMOOTH));
+    introIcon = new ImageIcon(introIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    introRollIcon = new ImageIcon(introRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor-1),java.awt.Image.SCALE_SMOOTH));
+    newtonIcon = new ImageIcon(newtonIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    newtonRollIcon = new ImageIcon(newtonRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    gaussianIcon = new ImageIcon(gaussianIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    gaussianRollIcon = new ImageIcon(gaussianRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    clenshawIcon = new ImageIcon(clenshawIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    clenshawRollIcon = new ImageIcon(clenshawRollIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    gifIcon = new ImageIcon(gifIcon.getImage().getScaledInstance((int)(pane.getWidth()/1.7),(int)(pane.getWidth()/1.7),java.awt.Image.SCALE_FAST));
+
+    gif.setIcon(gifIcon);
     title.setIcon(titleIcon);
     styleButton(intro,introIcon,introRollIcon);
     styleButton(newtoncotes,newtonIcon,newtonRollIcon);
     styleButton(gaussian,gaussianIcon,gaussianRollIcon);
     styleButton(clenshaw,clenshawIcon,clenshawRollIcon);
+    
     constraints();
+    pane.add(gif);
     pane.add(title);
     pane.add(intro);
     pane.add(newtoncotes);
@@ -74,14 +86,21 @@ public class MainMenu implements ActionListener, View {
     SpringLayout layout = (SpringLayout)pane.getLayout();
     layout.putConstraint(SpringLayout.WEST, title, 19, SpringLayout.WEST, pane);
     layout.putConstraint(SpringLayout.NORTH, title, 25, SpringLayout.NORTH, pane);
+    
     layout.putConstraint(SpringLayout.WEST, intro, -18, SpringLayout.WEST,pane);
     layout.putConstraint(SpringLayout.NORTH, intro, 15, SpringLayout.SOUTH, title);
+    
     layout.putConstraint(SpringLayout.WEST, newtoncotes, -18, SpringLayout.WEST,pane);
     layout.putConstraint(SpringLayout.NORTH, newtoncotes, 2, SpringLayout.SOUTH, intro);
+    
     layout.putConstraint(SpringLayout.WEST, gaussian, -18, SpringLayout.WEST,pane);
     layout.putConstraint(SpringLayout.NORTH, gaussian, 2, SpringLayout.SOUTH, newtoncotes);
+    
     layout.putConstraint(SpringLayout.WEST, clenshaw, -18, SpringLayout.WEST,pane);
     layout.putConstraint(SpringLayout.NORTH, clenshaw, 2, SpringLayout.SOUTH, gaussian);
+    
+    layout.putConstraint(SpringLayout.EAST, gif, 0, SpringLayout.EAST, pane);
+    layout.putConstraint(SpringLayout.NORTH, gif, 0, SpringLayout.NORTH, pane);
   }
   
   public void actionPerformed(ActionEvent ae) {

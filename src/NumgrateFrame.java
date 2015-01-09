@@ -3,7 +3,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.net.*;
 
-
 public class NumgrateFrame extends JPanel { 
   JFrame frame = new JFrame("Numgrate");
   SpringLayout spring = new SpringLayout();
@@ -16,13 +15,14 @@ public class NumgrateFrame extends JPanel {
     frame.setIconImage(windowIcon.getImage());
     
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-double width = screenSize.getWidth();
-double height = screenSize.getHeight();
-
+    double width = screenSize.getWidth();
+    double height = screenSize.getHeight();
+    
     setSize((int)(width/2.35),(int)(height/1.97));
     frame.setSize((int)(width/2.35),(int)(height/1.97));
     frame.setLocationRelativeTo(null);
     frame.add(this);
+    
     MainMenu m = new MainMenu(this);
     changeState(m);
     frame.setVisible(true);

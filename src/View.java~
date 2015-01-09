@@ -1,4 +1,4 @@
+package Numgrate.src;
 public interface View {
-  void options();
-  void constraints();
+  void showUI();
 }
