@@ -1,0 +1,20 @@
+package src.calculators;
+import src.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class Trapezoid extends Calculator {
+  public Trapezoid(JPanel pane) {
+    super(pane);
+  }
+  public void constraints() {
+  }
+  public void showUI() {
+  }
+  public void removeUI() {
+  }
+  public void init() {
+  }
+  public void actionPerformed(ActionEvent ae) {
+    System.out.println("hi");
+  }
+}

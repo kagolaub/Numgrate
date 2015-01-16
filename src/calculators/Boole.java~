@@ -1,0 +1,25 @@
+package src.calculators;
+import src.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.util.*;
+public class Boole extends Calculator {
+  int intervals;
+  String formula;
+  ArrayList<Integer> values = new ArrayList<Integer>();
+  public Boole(JPanel pane) {
+    super(pane);
+  }
+  public void constraints() {
+    super.constraints();
+  }
+  public void showUI() {
+    super.showUI();
+  }
+  public void removeUI() {
+    super.removeUI();
+  }
+  public String calculate() {
+    return formula;
+  }
+}

@@ -1,23 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <drjava version="drjava-20140826-r5761">
-  <project autorefresh="false" build="" main="src.NumgrateFrame" manifest="" root="" work="">
+  <project autorefresh="false" build="" main="src.NumgratePane" manifest="" root="" work="">
     <createjar file="numgrate.jar" flags="12"/>
     <source>
-      <file active="true" name="src/MainMenu.java" package="src" timestamp="07-Jan-2015 20:13:22">
-        <select from="1453" to="1453"/>
-        <scroll column="570" row="0"/>
+      <file active="true" name="src/calculators/Calculator.java" package="src.calculators" timestamp="16-Jan-2015 13:27:23">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
       </file>
-      <file name="src/View.java" package="src" timestamp="06-Jan-2015 22:27:28">
-        <select from="1453" to="1453"/>
-        <scroll column="570" row="0"/>
+      <file name="src/View.java" package="src" timestamp="15-Jan-2015 20:06:37">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
       </file>
-      <file name="src/Introduction.java" package="src" timestamp="06-Jan-2015 22:27:29">
-        <select from="1453" to="1453"/>
-        <scroll column="570" row="0"/>
+      <file name="src/Introduction.java" package="src" timestamp="15-Jan-2015 20:08:26">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
       </file>
-      <file name="src/NumgrateFrame.java" package="src" timestamp="07-Jan-2015 20:04:06">
-        <select from="1453" to="1453"/>
-        <scroll column="570" row="0"/>
+      <file name="src/NumgratePane.java" package="src" timestamp="15-Jan-2015 22:41:35">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/menus/Clenshaw.java" package="src.menus" timestamp="15-Jan-2015 23:13:17">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/menus/Gaussian.java" package="src.menus" timestamp="15-Jan-2015 23:13:23">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/StateManager.java" package="src" timestamp="16-Jan-2015 10:34:53">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/menus/MainMenu.java" package="src.menus" timestamp="16-Jan-2015 10:39:02">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/menus/Menu.java" package="src.menus" timestamp="16-Jan-2015 10:44:11">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/calculators/Equations.java" package="src.calculators" timestamp="16-Jan-2015 11:19:41">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/menus/NewtonCotes.java" package="src.menus" timestamp="16-Jan-2015 12:40:11">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/calculators/Simpson.java" package="src.calculators" timestamp="16-Jan-2015 12:54:41">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/calculators/Trapezoid.java" package="src.calculators" timestamp="16-Jan-2015 12:54:46">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
+      </file>
+      <file name="src/calculators/Boole.java" package="src.calculators" timestamp="16-Jan-2015 13:16:41">
+        <select from="5198" to="5198"/>
+        <scroll column="2353" row="0"/>
       </file>
     </source>
     <included/>
