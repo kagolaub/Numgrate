@@ -5,10 +5,7 @@ import src.menus.*;
 public class StateManager {
   public ArrayList <View> views;
   public final int MAINSTATE = 0;
-  public final int INTROSTATE = 1;
-  public final int NEWTONSTATE = 2;
-  public final int GAUSSIANSTATE = 3;
-  public final int CLENSHAWSTATE = 4;
+  public final int NEWTONSTATE = 1;
   public int currentState = 0;
   public SpringLayout layout;
   public JPanel pane;
@@ -20,10 +17,7 @@ public class StateManager {
     this.pane = g;
     this.layout = s;
     views.add(new MainMenu(this));
-    views.add(new Introduction(this));
     views.add(new NewtonCotes(this));
-    views.add(new Gaussian(this));
-    views.add(new Clenshaw(this));
     init();
     setState(MAINSTATE);
   }
@@ -36,7 +30,7 @@ public class StateManager {
   public void setState(int state) {
     views.get(currentState).removeUI();
     currentState = state;
-    pane.setSize((int)(g.width/2.35),(int)(g.height/1.97));
+    pane.setSize(817,548);
     views.get(currentState).showUI();
     views.get(currentState).constraints();
     pane.repaint();

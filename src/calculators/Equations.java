@@ -81,6 +81,7 @@ public class Equations
         }
       }
     }
+    
     //Exponent
     for (int x = 1; x < s.size () - 1; x++)
     {

@@ -23,8 +23,9 @@ public class NewtonCotes extends Menu{
   public NewtonCotes(StateManager sm) {
     super(sm.pane);
     this.sm = sm;
-    trapezoids = new Trapezoid(sm.pane);
     booles = new Boole(sm.pane);
+    trapezoids = new Trapezoid(sm.pane);
+    
     simpsons = new Simpson(sm.pane);
   }
   
@@ -56,22 +57,17 @@ public class NewtonCotes extends Menu{
       field.setText("Java Code Geeks");
       Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
       field.setBorder(border);
+      trapezoids.init();
+      simpsons.init();
+      booles.init();
     }
     catch (Exception e) {
       e.printStackTrace();
     }
   }
   
-  public void removeUI() {
-    super.removeUI();
-   // if (field != null)
-    //  sm.pane.remove(field);
-  }
-  
   public void constraints() {
     super.constraints();
-    sm.layout.putConstraint(SpringLayout.SOUTH, field, -70, SpringLayout.SOUTH, sm.pane);
-    sm.layout.putConstraint(SpringLayout.EAST, field, -30, SpringLayout.EAST, sm.pane);
   }
   
   public void actionPerformed(ActionEvent ae) {
@@ -89,7 +85,6 @@ public class NewtonCotes extends Menu{
       
       sm.pane.repaint();
       sm.pane.validate();
-      System.out.println("yey boole");
     }
     else if (ae.getActionCommand().equals("Trapezoid")) {
       if (calc != null)
@@ -104,6 +99,7 @@ public class NewtonCotes extends Menu{
     else if (ae.getActionCommand().equals("Simpson")) {
       if (calc!= null)
         calc.removeUI();
+      
       calc = simpsons;
       calc.showUI();
       calc.constraints();

@@ -5,8 +5,10 @@ import java.awt.event.*;
 import javax.swing.border.*;
 import java.awt.*;
 import java.util.*;
-public abstract class Calculator implements ActionListener{
+public abstract class Calculator implements ActionListener,View{
+  SpringLayout layout;
   boolean usesSetInterval;
+  ArrayList<Double> values;
   JLabel polyLab = new JLabel("f(x):");
   JLabel innerLab = new JLabel("Inner Bound:");
   JLabel outerLab = new JLabel("Outer Bound:");
@@ -21,18 +23,22 @@ public abstract class Calculator implements ActionListener{
   boolean added = false;
   Equations equation = new Equations();
   JPanel pane;
-  int interval;
-  int inner;
-  int outer;
-  public Calculator(JPanel pane, boolean interval) {
+  double interval;
+  double inner;
+  double outer;
+  
+  public Calculator(JPanel pane, boolean intervalTruth) {
     this.pane = pane;
+    usesSetInterval = intervalTruth;
+  }
+  
+  public void init() {
     Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
     polynomial.setBorder(border);
     innerBound.setBorder(border);
     outerBound.setBorder(border);
     intervals.setBorder(border);
     result.setBorder(border);
-    usesSetInterval = interval;
     calculate.addActionListener(this);
   }
   
@@ -58,8 +64,8 @@ public abstract class Calculator implements ActionListener{
     pane.add(outerBound);
     pane.add(outerLab);
     if (!usesSetInterval) {
-    pane.add(intervals);
-    pane.add(interLab);
+      pane.add(intervals);
+      pane.add(interLab);
     }
     pane.add(result);
     pane.add(resultLab);
@@ -67,13 +73,12 @@ public abstract class Calculator implements ActionListener{
   }
   
   public void constraints(){
-    SpringLayout layout = (SpringLayout)pane.getLayout();
-    System.out.println(pane.getHeight());
+    layout = (SpringLayout)pane.getLayout();
     layout.putConstraint(SpringLayout.EAST, polynomial, (int)(-1*(pane.getWidth()/6.3)), SpringLayout.EAST, pane);
-    layout.putConstraint(SpringLayout.SOUTH, polynomial,(int)(-1*(pane.getHeight()/2.24)), SpringLayout.SOUTH, pane);
+    layout.putConstraint(SpringLayout.SOUTH, polynomial, -230, SpringLayout.SOUTH, pane);
     
     layout.putConstraint(SpringLayout.EAST, polyLab, (int)(-1*(pane.getWidth()/81.7)), SpringLayout.WEST, polynomial);
-    layout.putConstraint(SpringLayout.SOUTH, polyLab,(int)(-1*(pane.getHeight()/2.2415)),SpringLayout.SOUTH,pane);
+    layout.putConstraint(SpringLayout.SOUTH, polyLab,-232,SpringLayout.SOUTH,pane);
     
     layout.putConstraint(SpringLayout.EAST,innerBound,(int)(-1*(pane.getWidth()/6.284)),SpringLayout.EAST,pane);
     layout.putConstraint(SpringLayout.NORTH,innerBound,(int)(pane.getHeight()/54.8),SpringLayout.SOUTH,polynomial);
@@ -93,33 +98,38 @@ public abstract class Calculator implements ActionListener{
     layout.putConstraint(SpringLayout.EAST, interLab, (int)(-1*(pane.getWidth()/81.7)), SpringLayout.WEST, innerBound);
     layout.putConstraint(SpringLayout.NORTH, interLab,(int)(pane.getHeight()/42.154),SpringLayout.SOUTH,outerLab);
     
-    layout.putConstraint(SpringLayout.EAST, calculate, (int)(-1*(pane.getWidth()/4.2)), SpringLayout.EAST,pane);
+    layout.putConstraint(SpringLayout.EAST, calculate, (int)(-1*(pane.getWidth()/4.15)), SpringLayout.EAST,pane);
     layout.putConstraint(SpringLayout.NORTH,calculate,(int)(pane.getHeight()/54.8), SpringLayout.SOUTH, intervals);
     
-    layout.putConstraint(SpringLayout.EAST,result,(int)(-1*(pane.getWidth()/6.284)),SpringLayout.EAST,pane);
-    layout.putConstraint(SpringLayout.NORTH,result,(int)(pane.getHeight()/54.8),SpringLayout.SOUTH,calculate);
+    layout.putConstraint(SpringLayout.EAST, result,(int)(-1*(pane.getWidth()/6.284)),SpringLayout.EAST,pane);
+    layout.putConstraint(SpringLayout.NORTH, result,(int)(pane.getHeight()/54.8),SpringLayout.SOUTH,calculate);
     
-    layout.putConstraint(SpringLayout.EAST,resultLab, (int)(-1*(pane.getWidth()/81.7)), SpringLayout.WEST, result);
+    layout.putConstraint(SpringLayout.EAST, resultLab, (int)(-1*(pane.getWidth()/81.7)), SpringLayout.WEST, result);
     layout.putConstraint(SpringLayout.NORTH, resultLab,(int)(pane.getHeight()/42.154),SpringLayout.SOUTH, calculate);
   }
   
-  public abstract String calculate (ArrayList<Integer> values);
+  public abstract String calculate ();
   
   public void setInterval(int interval) {
-    this.interval = interval;
+    intervals.setText(""+interval);
   }
-  public ArrayList<Integer> values(int interval) {
-    ArrayList<Integer> value = new ArrayList<Integer>();
+  
+  public ArrayList<Double> values() {
+    ArrayList<Double> value = new ArrayList<Double>();
     inner = Integer.parseInt(innerBound.getText());
     outer = Integer.parseInt(outerBound.getText());
     try {
-     // if (equation.check(polynomial.getText())){
-   //   for (int x = inner; x < outer; x = x + ((outer-inner)/interval)) {
-        value.add((int)(equation.result("x+y", 1, 2)));
-    //}
-      //}
-      //else
-      //      System.out.println("bad equation");
+      if (equation.check(polynomial.getText())){
+        double x = inner;
+        while (x <= outer){
+          //System.out.println(x);
+          value.add((double)(equation.result(polynomial.getText(), x, 0)));
+          x+=(outer-inner)/interval;
+        }
+      }
+      else
+        System.out.println("bad equation");
+      System.out.println("u did it");
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -129,8 +139,6 @@ public abstract class Calculator implements ActionListener{
   
   public void actionPerformed(ActionEvent ae) {
     if (ae.getActionCommand().equals("Calculate!")) {
-      
-      
       if (polynomial.getText().equals(""))
         result.setText("Please enter a function.");
       else if (innerBound.getText().equals(""))
@@ -138,9 +146,13 @@ public abstract class Calculator implements ActionListener{
       else if (outerBound.getText().equals(""))
         result.setText("Please enter an upper limit.");
       else if (!usesSetInterval && intervals.getText().equals(""))
-        result.setText("Please enter an interval");
-      else
-        result.setText(calculate(values(interval)));
+        result.setText("Please enter an interval.");
+      else {
+        if (!intervals.getText().equals(""))
+          interval = Integer.parseInt(intervals.getText());
+        values = values();
+        result.setText(calculate());
+      }
     }
   }
 }

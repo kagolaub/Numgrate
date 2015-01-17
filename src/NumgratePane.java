@@ -17,13 +17,12 @@ public class NumgratePane extends JPanel {
     URL iconURL = getClass().getResource("/assets/numgrateicon.png");
     ImageIcon windowIcon = new ImageIcon(iconURL);
     frame.setIconImage(windowIcon.getImage());
-    
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     width = screenSize.getWidth();
     height = screenSize.getHeight();
     
-    setSize((int)(width/2.35),(int)(height/1.97));
-    frame.setSize((int)(width/2.35),(int)(height/1.97));
+    setSize(817,548);
+    frame.setSize(817,548);
     frame.setLocationRelativeTo(null);
     frame.add(this);
     

@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import src.*;
 public abstract class Menu implements ActionListener, View{
+  SpringLayout layout;
   private double buttonWidthFactor = 2.75;
   private double titleWidthFactor = 3.5;
   private double buttonHeightFactor = 7.75;
@@ -14,16 +15,15 @@ public abstract class Menu implements ActionListener, View{
   private JButton buttonTwo = null;
   private JButton buttonThree = null;
   private JButton buttonFour = null;
-  private JLabel gif = new JLabel();
   JLabel title = new JLabel();
   
   public Menu(JPanel pane) {
     this.pane = pane;
+    layout = (SpringLayout)pane.getLayout();
   }
   
   public void showUI() {
     pane.add(title);
-    pane.add(gif);
     if (buttonOne != null)
     pane.add(buttonOne);
     if (buttonTwo != null)
@@ -32,6 +32,18 @@ public abstract class Menu implements ActionListener, View{
     pane.add(buttonThree);
     if (buttonFour != null)
     pane.add(buttonFour);
+  }
+  
+  public JLabel addGif() {
+    JLabel gif = new JLabel();
+    URL gifURL = getClass().getResource("/assets/gif.gif");
+    ImageIcon gifIcon = new ImageIcon(gifURL);
+    gifIcon = new ImageIcon(gifIcon.getImage().getScaledInstance((int)(pane.getWidth()/1.7),(int)(pane.getWidth()/1.7),java.awt.Image.SCALE_FAST));
+    gif.setIcon(gifIcon);
+    SpringLayout layout = (SpringLayout)pane.getLayout();
+    layout.putConstraint(SpringLayout.EAST, gif, 0, SpringLayout.EAST, pane);
+    layout.putConstraint(SpringLayout.NORTH, gif, 0, SpringLayout.NORTH, pane);
+    return gif;
   }
   
   public void removeUI() {
@@ -47,8 +59,8 @@ public abstract class Menu implements ActionListener, View{
   
   public void setButton(ImageIcon icon, ImageIcon rollIcon, String actionCommand, ActionListener i, int buttonNumber) {
     JButton button = new JButton();
-    icon = new ImageIcon(icon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
-    rollIcon = new ImageIcon(rollIcon.getImage().getScaledInstance((int)(pane.getWidth()/buttonWidthFactor),(int)(pane.getHeight()/buttonHeightFactor),java.awt.Image.SCALE_SMOOTH));
+    icon = new ImageIcon(icon.getImage().getScaledInstance(297,71,java.awt.Image.SCALE_SMOOTH));
+    rollIcon = new ImageIcon(rollIcon.getImage().getScaledInstance(297,71,java.awt.Image.SCALE_SMOOTH));
     button.setIcon(icon);
     button.setBorderPainted(false);
     button.setContentAreaFilled(false);
@@ -68,27 +80,27 @@ public abstract class Menu implements ActionListener, View{
   
   public void constraints() {
     double widthButtonFactor = 45.6;
-    double heightIntroFactor = 3.5;
+    double heightIntroFactor = 4.7;
     
     SpringLayout layout = (SpringLayout)pane.getLayout();
-    
+    //System.out.println(pane.getWidth() + " " + pane.getHeight());
     if (buttonOne != null) {
-    layout.putConstraint(SpringLayout.WEST, buttonOne, -1*(int)(pane.getWidth()/widthButtonFactor), SpringLayout.WEST, pane);
-    layout.putConstraint(SpringLayout.NORTH, buttonOne, (int)(pane.getHeight()/heightIntroFactor), SpringLayout.NORTH, pane);
+    layout.putConstraint(SpringLayout.WEST, buttonOne, -18, SpringLayout.WEST, pane);
+    layout.putConstraint(SpringLayout.NORTH, buttonOne, 154, SpringLayout.NORTH, pane);
     }
     
     if (buttonTwo != null) {
-    layout.putConstraint(SpringLayout.WEST, buttonTwo, -1*(int)(pane.getWidth()/widthButtonFactor), SpringLayout.WEST, pane);
+    layout.putConstraint(SpringLayout.WEST, buttonTwo, -18, SpringLayout.WEST, pane);
     layout.putConstraint(SpringLayout.NORTH, buttonTwo, 2, SpringLayout.SOUTH, buttonOne);
     }
     
     if (buttonThree != null) {
-    layout.putConstraint(SpringLayout.WEST, buttonThree, -1*(int)(pane.getWidth()/widthButtonFactor), SpringLayout.WEST, pane);
+    layout.putConstraint(SpringLayout.WEST, buttonThree, -18, SpringLayout.WEST, pane);
     layout.putConstraint(SpringLayout.NORTH, buttonThree, 2, SpringLayout.SOUTH, buttonTwo);
     }
     
     if (buttonFour != null) {
-    layout.putConstraint(SpringLayout.WEST, buttonFour, -1*(int)(pane.getWidth()/widthButtonFactor), SpringLayout.WEST, pane);
+    layout.putConstraint(SpringLayout.WEST, buttonFour, -18, SpringLayout.WEST, pane);
     layout.putConstraint(SpringLayout.NORTH, buttonFour, 2, SpringLayout.SOUTH, buttonThree);
     }
   }
